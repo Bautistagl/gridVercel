@@ -94,7 +94,7 @@ export default function Home() {
             <CardPricing
               className="scroll-in"
               planType="team"
-              price="150"
+              price="140"
               description="For teams of more than 5 members."
               features={[
                 'Unlimited Resources',
