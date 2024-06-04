@@ -34,7 +34,6 @@ export default function Pricing() {
             Start on one tier and move freely between plans.
           </div>
           <div style={{ display: 'flex' }}>
-            <CardPrincing />
             <CardPrincing2 />
           </div>
           <FaqsPricing />
