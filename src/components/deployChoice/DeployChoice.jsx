@@ -4,57 +4,64 @@ import axios from 'axios';
 
 const DeployChoice = () => {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [nodes, setNodes] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://api.cloudmos.io/v1/dashboard-data'
-        );
-        const rawData = response.data.networkCapacity;
+    const fetchFlux = () => {
+      setLoading(true);
+      fetch('https://stats.runonflux.io/fluxinfo?projection=benchmark')
+        .then((response) => response.json())
+        .then((data) => {
+          let totalSsd = 0,
+            totalRam = 0,
+            totalStorage = 0;
 
-        // Convert bytes to terabytes and format the numbers
-        const formattedData = {
-          activeProviderCount: rawData.activeProviderCount,
-          activeCPU: formatNumberWithK(rawData.totalCPU),
-          activeMemory: (rawData.totalMemory / 1024 ** 4).toFixed(2), // Convert bytes to TB
-          activeStorage: (rawData.totalStorage / 1024 ** 4).toFixed(2), // Convert bytes to TB
-        };
+          data.data.forEach((item) => {
+            const bench = item.benchmark.bench;
+            totalSsd += bench.ssd;
+            totalRam += bench.ram;
+            totalStorage += bench.cores;
+          });
 
-        setData(formattedData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+          // Convert MB to TB
+          totalSsd = totalSsd / 1024;
+          totalRam = totalRam / 1024;
+
+          setData({
+            totalSsd,
+            totalRam,
+            totalStorage,
+          });
+
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          setLoading(false);
+        });
     };
+    const fetchNodes = () => {
+      setLoading(true);
+      fetch('https://api.runonflux.io/daemon/getfluxnodecount')
+        .then((response) => response.json())
+        .then((data) => {
+          let totalNodes = 0;
+          totalNodes = data.data.total;
 
-    fetchData();
-
-    // const handleScroll = () => {
-    //   const leftCard = document.querySelector('.scroll-in-left');
-    //   const rightCard = document.querySelector('.scroll-in-right');
-    //   const triggerBottom = (window.innerHeight / 5) * 4;
-
-    //   if (leftCard.getBoundingClientRect().top < triggerBottom) {
-    //     leftCard.classList.add('visible');
-    //   }
-
-    //   if (rightCard.getBoundingClientRect().top < triggerBottom) {
-    //     rightCard.classList.add('visible');
-    //   }
-    // };
-
-    // window.addEventListener('scroll', handleScroll);
-
-    // // Cleanup event listener on component unmount
-    // return () => window.removeEventListener('scroll', handleScroll);
+          setNodes({
+            totalNodes,
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
+    fetchNodes();
+    fetchFlux();
   }, []);
-  const formatNumberWithK = (number) => {
-    return number >= 1000
-      ? (number / 1000000).toFixed(2) + 'K'
-      : number.toString();
-  };
 
-  if (!data) {
+  if (loading || !data) {
     return <div>Loading...</div>; // Muestra un indicador de carga mientras se obtienen los datos
   }
 
@@ -62,22 +69,14 @@ const DeployChoice = () => {
     <div className="deploy-choice">
       <h1>Deploy on the cloud of your choice</h1>
       <span>Access computing with the best providers</span>
-      <div style={{ display: 'flex' }}>
-        <DeployOption
-          className="scroll-in-left"
-          image="/fluxLanding.svg"
-          title="The largest decentralized computing network"
-          text="Discover the freedom of managing a cloud without the need of expertise or DevOps. Even if you're unfamiliar with new decentralized technologies, we make hosting stress-free and accessible for everyone, offering a straightforward and dependable experience in the realm of decentralization."
-          data={data}
-        />
-        <DeployOption
-          className="scroll-in-right"
-          image="/akashLanding.svg"
-          title="Supercloud"
-          text="Discover the freedom of managing a cloud without the need of expertise or DevOps. Even if you're unfamiliar with new decentralized technologies, we make hosting stress-free and accessible for everyone, offering a straightforward and dependable experience in the realm of decentralization."
-          data={data}
-        />
-      </div>
+      <DeployOption
+        image="/fluxLanding.svg"
+        title="The largest decentralized computing network"
+        text="Discover the freedom of managing a cloud without the need of expertise or DevOps. Even if you're unfamiliar with new decentralized technologies, we make hosting stress-free and accessible for everyone, offering a straightforward and dependable experience in the realm of decentralization."
+        data={data}
+        nodes={nodes}
+      />
+      <button className="button-landing-4">DEPLOY NOW</button>
     </div>
   );
 };
