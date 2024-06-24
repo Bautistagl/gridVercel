@@ -3,7 +3,7 @@ import React from 'react';
 const CardPricing = ({ planType, price, description, features, className }) => {
   return (
     <div className={`pricing-card ${planType} ${className}`}>
-      <h2>{planType.charAt(0).toUpperCase() + planType.slice(1)}</h2>
+      <h2>{planType}</h2>
       <h1>
         ${price}
         <span>/ per month</span>
