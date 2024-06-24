@@ -1,67 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import DeployOption from './DeployOption';
-import axios from 'axios';
 
 const DeployChoice = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [nodes, setNodes] = useState(null);
 
+  const fetchFlux = async () => {
+    const response = await fetch(
+      'https://stats.runonflux.io/fluxinfo?projection=benchmark'
+    );
+    const data = await response.json();
+
+    let totalSsd = 0,
+      totalRam = 0,
+      totalStorage = 0;
+
+    data.data.forEach((item) => {
+      const bench = item.benchmark.bench;
+      totalSsd += bench.ssd;
+      totalRam += bench.ram;
+      totalStorage += bench.cores;
+    });
+
+    // Convert MB to TB
+    totalSsd = totalSsd / 1024;
+    totalRam = totalRam / 1024;
+
+    return {
+      totalSsd,
+      totalRam,
+      totalStorage,
+    };
+  };
+
+  const fetchNodes = async () => {
+    const response = await fetch(
+      'https://api.runonflux.io/daemon/getfluxnodecount'
+    );
+    const data = await response.json();
+
+    return {
+      totalNodes: data.data.total,
+    };
+  };
+
   useEffect(() => {
-    const fetchFlux = () => {
+    const fetchData = async () => {
       setLoading(true);
-      fetch('https://stats.runonflux.io/fluxinfo?projection=benchmark')
-        .then((response) => response.json())
-        .then((data) => {
-          let totalSsd = 0,
-            totalRam = 0,
-            totalStorage = 0;
-
-          data.data.forEach((item) => {
-            const bench = item.benchmark.bench;
-            totalSsd += bench.ssd;
-            totalRam += bench.ram;
-            totalStorage += bench.cores;
-          });
-
-          // Convert MB to TB
-          totalSsd = totalSsd / 1024;
-          totalRam = totalRam / 1024;
-
-          setData({
-            totalSsd,
-            totalRam,
-            totalStorage,
-          });
-
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          setLoading(false);
-        });
+      try {
+        const [fluxData, nodesData] = await Promise.all([
+          fetchFlux(),
+          fetchNodes(),
+        ]);
+        setData(fluxData);
+        setNodes(nodesData);
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
     };
-    const fetchNodes = () => {
-      setLoading(true);
-      fetch('https://api.runonflux.io/daemon/getfluxnodecount')
-        .then((response) => response.json())
-        .then((data) => {
-          let totalNodes = 0;
-          totalNodes = data.data.total;
 
-          setNodes({
-            totalNodes,
-          });
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    };
-    fetchNodes();
-    fetchFlux();
+    fetchData();
   }, []);
 
-  if (loading || !data) {
+  if (loading || !data || !nodes) {
     return <div>Loading...</div>; // Muestra un indicador de carga mientras se obtienen los datos
   }
 
