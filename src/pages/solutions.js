@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import Footer from '@/components/index/Footer';
 import { useInView } from 'react-intersection-observer';
-import Charts from '@/components/solutions/Charts';
 import Migration from '@/components/solutions/Migration';
 import React, { useRef } from 'react';
 import ContactForm from '@/components/index/ContactForm';
@@ -44,25 +43,10 @@ export default function Solutions() {
     <>
       <div className="container-homePrincipal">
         <DynamicNavbar scrollToContactForm={scrollToContactForm} />
-        {/* <div className="banner-container">
-    <Banner
-    producto='Web Hosting'
-        title='Seamlessly transition from any cloud provider.'
-        subtitle='Grid is designed for businesses that are looking for cost-effective cloud solutions and may not have the budget for super-scale providers. It offers the simplest path to migrate to a decentralized cloud environment.'
-      />
-       <img 
-         ref={ref}
-         style={inView ? fadeInStylesLeft : {}}
-       src="/ilustracion-webHosting.svg" alt="" className="ilustracion-bannerGrande" />
-       </div> */}
+
         <div style={{ opacity: '0' }}>.</div>
         <SolutionCard />
-
-        <div>
-          <Charts />
-        </div>
         <Migration />
-
         <ContactForm1 ref={contactFormRef} />
         <Footer scrollToContactForm={scrollToContactForm} />
       </div>

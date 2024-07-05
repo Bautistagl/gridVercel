@@ -23,7 +23,7 @@ export default function Pricing() {
   return (
     <>
       <div className="container-homePrincipal">
-        {/* <DynamicNavbar />
+        <DynamicNavbar />
         <div className="banner-container3">
           <div style={{ marginTop: '150px' }} className="titulo-asic2">
             {' '}
@@ -40,7 +40,7 @@ export default function Pricing() {
           <FaqsPricing />
         </div>
 
-        <Footer /> */}
+        <Footer />
       </div>
     </>
   );
