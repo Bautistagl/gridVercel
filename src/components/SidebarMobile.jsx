@@ -25,7 +25,7 @@ const SidebarMobile = () => {
         </span>
         <div>
           {' '}
-          <Link href="/profile/ssl"> Account Settings </Link>
+          <Link href="/profile/ssl"> Accounst Settings </Link>
         </div>
         <div>
           <Link href="/profile/security"> Security </Link>
