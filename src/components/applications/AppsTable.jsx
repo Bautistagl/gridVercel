@@ -121,7 +121,7 @@ const AppsTable = () => {
           <div>Renewal date</div>
           <div>Instance type</div>
         </div>
-        <Link href="/profile/project/activity">
+        <a href="/profile/project/activity">
           <AppsTableRow
             name="Application name"
             type="Application"
@@ -132,7 +132,7 @@ const AppsTable = () => {
             instanceType="STANDARD"
             mode={darkMode}
           />
-        </Link>
+        </a>
         <AppsTableRow
           name="Application name"
           type="Application"
