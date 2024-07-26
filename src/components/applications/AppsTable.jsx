@@ -121,18 +121,18 @@ const AppsTable = () => {
           <div>Renewal date</div>
           <div>Instance type</div>
         </div>
-        <a href="/profile/project/activity">
-          <AppsTableRow
-            name="Application name"
-            type="Application"
-            status="ACTIVE"
-            team="+1"
-            creationDate="12/03/2025"
-            renewalDate="12/03/2025"
-            instanceType="STANDARD"
-            mode={darkMode}
-          />
-        </a>
+
+        <AppsTableRow
+          name="Application name"
+          type="Application"
+          status="ACTIVE"
+          team="+1"
+          creationDate="12/03/2025"
+          renewalDate="12/03/2025"
+          instanceType="STANDARD"
+          mode={darkMode}
+        />
+
         <AppsTableRow
           name="Application name"
           type="Application"
