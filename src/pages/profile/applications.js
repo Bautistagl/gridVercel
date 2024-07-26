@@ -1,4 +1,4 @@
-import AppsTable from "@/components/applications/appsTable";
+import AppsTable from "@/components/applications/AppsTable";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
