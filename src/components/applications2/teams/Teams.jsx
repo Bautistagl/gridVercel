@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import General from "./General";
-import Domains from "./Domains";
-import Notifications from "./Notifications";
-import ThemeToggle from "../ThemeToggle";
 import { useTheme } from "@/ThemeContext";
-import Notis from "./Notis";
+import Notis from "../Notis";
+import ThemeToggle from "@/components/ThemeToggle";
+import InfoSideBar from "../InfoSideBar";
+import TeamInfo from "./TeamInfo";
+import TeamInfoHeader from "./TeamInfoHeader";
 
-const SingleApp = () => {
+const TeamScreen = () => {
   const { darkMode } = useTheme();
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -48,30 +48,37 @@ const SingleApp = () => {
             </div>
           </div>
         </div>
-        <div className="content">
-          <div className={`sidebar ${darkMode ? "dark" : "light"}`}>
-            <ul>
-              <li>Information</li>
-              <li>Events</li>
-              <li>Logs</li>
-              <li>Team</li>
-              <li>Environment</li>
-              <li>Metrics</li>
-              <li>Update/Renew</li>
-            </ul>
-          </div>
+
+        <div className="content2">
+          <InfoSideBar darkMode={darkMode} />
           <div
+            className={`main-content ${darkMode ? "dark" : "light"}`}
             style={{ display: "flex", flexDirection: "column", width: "80%" }}
           >
-            <General darkMode={darkMode} />
-            <Domains darkMode={darkMode} />
-            <Notifications darkMode={darkMode} />
-            <div>
-              <div className="noti-buttons2">
-                <button className="noti-button3"> Delete web service</button>
-                <button className="noti-button4"> Suspend web service</button>
-              </div>
-            </div>
+            <TeamInfoHeader />
+            <TeamInfo
+              darkMode={darkMode}
+              icon="/memberDark.svg"
+              name="Benjamin Aguirre"
+              user="@user1999"
+              role="Admin"
+              status="ACTIVE"
+              email="prueba@gmail.com"
+              team="Grid 1"
+              number={3}
+            />
+            <TeamInfo
+              darkMode={darkMode}
+              icon="/memberDark.svg"
+              name="Benjamin Aguirre"
+              user="@user1999"
+              role="Admin"
+              status="INACTIVE"
+              email="prueba@gmail.com"
+              team="Grid 1"
+              number={4}
+            />
+            <button className="add-button2">+ Add team member</button>
           </div>
         </div>
       </div>
@@ -79,4 +86,4 @@ const SingleApp = () => {
   );
 };
 
-export default SingleApp;
+export default TeamScreen;

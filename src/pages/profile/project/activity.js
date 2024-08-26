@@ -1,7 +1,4 @@
-import DeployedNavbar from "@/commons/DeployedNavbar";
-import ProjectInfo from "@/commons/ProjectInfo";
-import SingleApp from "@/components/applications2/SingleApp";
-import ActivityScreen from "@/components/projectsx/ActivityScreen";
+import Information from "@/components/applications2/Information";
 import dynamic from "next/dynamic";
 
 import { useState } from "react";
@@ -20,7 +17,7 @@ export default function Activity() {
     <div className="logged-home-component2">
       <div style={{ display: "flex", flexDirection: "row", height: "100vh" }}>
         <DynamicNavbar />
-        <SingleApp />
+        <Information />
       </div>
     </div>
   );
