@@ -66,7 +66,6 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
             </p>
           </div>
         </div>
-        <h5>Countries : 78</h5>
       </div>
     </div>
   );

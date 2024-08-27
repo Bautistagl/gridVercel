@@ -11,32 +11,18 @@ const DeployChoice = () => {
   useEffect(() => {
     const fetchFlux = async () => {
       try {
-        const response = await fetch(
-          "https://stats.runonflux.io/fluxinfo?projection=benchmark"
-        );
+        const response = await fetch("/api/flux-proxy");
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            `API error: ${errorData.error}, Details: ${errorData.details}`
+          );
+        }
         const data = await response.json();
-        let totalSsd = 0,
-          totalRam = 0,
-          totalStorage = 0;
-
-        data.data.forEach((item) => {
-          const bench = item.benchmark.bench;
-          totalSsd += bench.ssd;
-          totalRam += bench.ram;
-          totalStorage += bench.cores;
-        });
-
-        // Convert MB to TB
-        totalSsd = totalSsd / 1024;
-        totalRam = totalRam / 1024;
-
-        setFluxData({
-          totalSsd,
-          totalRam,
-          totalStorage,
-        });
+        setFluxData(data);
       } catch (error) {
-        console.error("Error fetching Flux data:", error);
+        console.error("Error fetching Flux data:", error.message);
+        setFluxData(null); // or some default/error state
       }
     };
 
