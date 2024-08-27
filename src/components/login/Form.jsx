@@ -14,7 +14,7 @@ export default function LoginForm() {
   return (
     <div className="login">
       <Link href="/">
-        <Image alt="" src="/LogoGridVacio.svg" height={100} width={100} />
+        <Image alt="" src="/logoGridVacio.svg" height={100} width={100} />
       </Link>
       <div className="form-container">
         <div className="login-container">
@@ -51,7 +51,7 @@ export default function LoginForm() {
             <button className="login-option">
               <Image
                 alt=""
-                src={web3 ? "/zelId.svg" : ""}
+                src={web3 ? "/zelID.svg" : ""}
                 height={20}
                 width={20}
               />

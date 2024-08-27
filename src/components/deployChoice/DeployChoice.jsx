@@ -56,9 +56,7 @@ const DeployChoice = () => {
 
     const fetchAkash = async () => {
       try {
-        const response = await fetch(
-          "https://api.cloudmos.io/v1/dashboard-data"
-        );
+        const response = await fetch("/api/flux-proxy");
         const data = await response.json();
         const akashInfo = data.now;
 
@@ -88,12 +86,18 @@ const DeployChoice = () => {
   }, []);
 
   if (loading || !fluxData || !fluxNodes || !akashData) {
-    return <div>Loading...</div>; // Muestra un indicador de carga mientras se obtienen los datos
+    return (
+      <div>
+        {console.log(fluxData, fluxNodes, akashData)}
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="deploy-choice">
       <h1>Deploy on the cloud of your choice</h1>
+
       <span>Access computing with the best providers</span>
       <div className="deploy-options">
         <DeployOption
