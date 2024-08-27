@@ -48,7 +48,7 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
                 start={0}
                 end={data.totalStorage / 1000}
                 duration={2.5}
-                suffix="K"
+                suffix=" K"
               />
             </p>
           </div>

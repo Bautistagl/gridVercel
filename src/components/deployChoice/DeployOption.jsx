@@ -33,7 +33,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
                   start={0}
                   end={Math.floor(data.totalRam)}
                   duration={2.5}
-                  suffix="TB"
+                  suffix=" TB"
                 />
               </p>
             </div>
@@ -48,7 +48,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
                 start={0}
                 end={Math.floor(data.totalStorage)}
                 duration={2.5}
-                suffix="K"
+                suffix=" K"
               />
             </p>
           </div>
@@ -60,7 +60,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
                 start={0}
                 end={Math.floor(data.totalSsd)}
                 duration={2.5}
-                suffix="TB"
+                suffix=" TB"
               />
             </p>
           </div>
