@@ -85,13 +85,8 @@ const DeployChoice = () => {
     fetchAllData();
   }, []);
 
-  if (loading || !fluxData || !fluxNodes || !akashData) {
-    return (
-      <div>
-        {console.log(fluxData, fluxNodes, akashData)}
-        Loading...
-      </div>
-    );
+  if (loading || !akashData) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -100,13 +95,13 @@ const DeployChoice = () => {
 
       <span>Access computing with the best providers</span>
       <div className="deploy-options">
-        <DeployOption
+        {/* <DeployOption
           image="/fluxLanding.svg"
           title="The largest decentralized computing network"
           text="Discover the freedom of managing a cloud without the need of expertise or DevOps. Even if you're unfamiliar with new decentralized technologies, we make hosting stress-free and accessible for everyone, offering a straightforward and dependable experience in the realm of decentralization."
           data={fluxData}
           nodes={fluxNodes}
-        />
+        /> */}
         <DeployOption2
           image="/akashLanding.svg" // Replace with actual image path
           title="Akash Network"
