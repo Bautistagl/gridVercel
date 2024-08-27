@@ -74,9 +74,10 @@
 }
 .deploy-data h4 {
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   justify-content: center;
   margin-top: 10px;
+ 
 }
 .deploy-data p {
   display: flex;
@@ -126,6 +127,8 @@
 }
 
 .countup-large {
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  
   
 }

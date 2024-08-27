@@ -14,11 +14,11 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div className="deploy-numbers">
             <div className="deploy-data">
-              <h4>Total Nodes</h4>
+              <h4>Total Providers</h4>
               <p className="countup-large">
                 <CountUp
                   start={0}
-                  end={nodes}
+                  end={Math.floor(nodes)}
                   duration={2.5}
                   style={{ fontSize: "26px" }}
                 />
@@ -31,10 +31,10 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
                 <CountUp
                   style={{ fontSize: "26px" }}
                   start={0}
-                  end={data.totalRam}
+                  end={Math.floor(data.totalRam)}
                   duration={2.5}
-                />{" "}
-                TB
+                  suffix=" TB"
+                />
               </p>
             </div>
           </div>
@@ -46,8 +46,9 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
               <CountUp
                 style={{ fontSize: "26px" }}
                 start={0}
-                end={data.totalStorage}
+                end={data.totalStorage / 1000}
                 duration={2.5}
+                suffix="K"
               />
             </p>
           </div>
@@ -57,12 +58,10 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
               <CountUp
                 style={{ fontSize: "26px" }}
                 start={0}
-                end={data.totalSsd}
+                end={Math.floor(data.totalSsd)}
                 duration={2.5}
-                decimal=","
-                decimals={2}
-              />{" "}
-              TB
+                suffix=" TB"
+              />
             </p>
           </div>
         </div>

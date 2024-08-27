@@ -18,7 +18,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
               <p className="countup-large">
                 <CountUp
                   start={0}
-                  end={nodes.totalNodes}
+                  end={Math.floor(nodes.totalNodes)}
                   duration={2.5}
                   style={{ fontSize: "26px" }}
                 />
@@ -31,10 +31,10 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
                 <CountUp
                   style={{ fontSize: "26px" }}
                   start={0}
-                  end={data.totalRam}
+                  end={Math.floor(data.totalRam)}
                   duration={2.5}
-                />{" "}
-                TB
+                  suffix="TB"
+                />
               </p>
             </div>
           </div>
@@ -46,8 +46,9 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
               <CountUp
                 style={{ fontSize: "26px" }}
                 start={0}
-                end={data.totalStorage}
+                end={Math.floor(data.totalStorage)}
                 duration={2.5}
+                suffix="K"
               />
             </p>
           </div>
@@ -57,12 +58,10 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
               <CountUp
                 style={{ fontSize: "26px" }}
                 start={0}
-                end={data.totalSsd}
+                end={Math.floor(data.totalSsd)}
                 duration={2.5}
-                decimal=","
-                decimals={2}
-              />{" "}
-              TB
+                suffix="TB"
+              />
             </p>
           </div>
         </div>

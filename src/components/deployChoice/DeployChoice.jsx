@@ -50,12 +50,12 @@ const DeployChoice = () => {
           );
         }
         const data = await response.json();
-        const akashInfo = data.now;
+        const akashInfo = data;
 
-        const totalSsd = akashInfo.activeStorage / 1024 ** 4; // Convert bytes to TB
-        const totalRam = akashInfo.activeMemory / 1024 ** 4; // Convert bytes to TB
-        const totalStorage = akashInfo.activeCPU; // Assuming this is the total cores
-        const totalNodes = akashInfo.activeGPU;
+        const totalSsd = akashInfo.totalStorage / 1024 ** 4; // Convert bytes to TB
+        const totalRam = akashInfo.totalMemory / 1024 ** 4; // Convert bytes to TB
+        const totalStorage = akashInfo.totalCPU; // Assuming this is the total cores
+        const totalNodes = akashInfo.activeProviderCount;
 
         setAkashData({
           totalSsd,
