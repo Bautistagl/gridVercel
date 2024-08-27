@@ -26,12 +26,12 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
             </div>
 
             <div className="deploy-data">
-              <h4>Total RAM</h4>
+              <h4>Total Memory</h4>
               <p className="countup-large">
                 <CountUp
                   style={{ fontSize: "26px" }}
                   start={0}
-                  end={Math.floor(data.totalRam)}
+                  end={data.totalRam}
                   duration={2.5}
                   suffix=" TB"
                 />
@@ -41,19 +41,18 @@ const DeployOption2 = ({ image, title, text, className, data, nodes }) => {
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div className="deploy-data">
-            <h4>Total CPU</h4>
+            <h4>Total GPU</h4>
             <p className="countup-large">
               <CountUp
                 style={{ fontSize: "26px" }}
                 start={0}
-                end={data.totalStorage / 1000}
+                end={data.totalStorage}
                 duration={2.5}
-                suffix=" K"
               />
             </p>
           </div>
           <div className="deploy-data">
-            <h4>Total SSD</h4>
+            <h4>Total Storage</h4>
             <p className="countup-large">
               <CountUp
                 style={{ fontSize: "26px" }}

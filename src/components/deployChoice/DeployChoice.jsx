@@ -52,9 +52,9 @@ const DeployChoice = () => {
         const data = await response.json();
         const akashInfo = data;
 
-        const totalSsd = akashInfo.totalStorage / 1024 ** 4; // Convert bytes to TB
-        const totalRam = akashInfo.totalMemory / 1024 ** 4; // Convert bytes to TB
-        const totalStorage = akashInfo.totalCPU; // Assuming this is the total cores
+        const totalSsd = akashInfo.totalStorage / 1000000000000; // Convert bytes to TB
+        const totalRam = akashInfo.totalMemory / 1000000000000; // Convert bytes to TB
+        const totalStorage = akashInfo.totalGPU; // Assuming this is the total cores
         const totalNodes = akashInfo.activeProviderCount;
 
         setAkashData({
@@ -96,7 +96,7 @@ const DeployChoice = () => {
         />
         <DeployOption2
           image="/akashLanding.svg" // Replace with actual image path
-          title="Akash Network"
+          title="Supercloud"
           text="Explore the power of Akash Network for your decentralized cloud needs. Akash offers a robust and flexible solution for all your hosting requirements, ensuring reliability and ease of use."
           data={akashData}
           nodes={akashData.totalNodes} // Assuming activeLeaseCount represents the number of active nodes
