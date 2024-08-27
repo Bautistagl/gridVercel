@@ -56,7 +56,13 @@ const DeployChoice = () => {
 
     const fetchAkash = async () => {
       try {
-        const response = await fetch("/api/flux-proxy");
+        const response = await fetch("/api/akash-proxy");
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            `API error: ${errorData.error}, Details: ${errorData.details}`
+          );
+        }
         const data = await response.json();
         const akashInfo = data.now;
 
@@ -92,7 +98,7 @@ const DeployChoice = () => {
   return (
     <div className="deploy-choice">
       <h1>Deploy on the cloud of your choice</h1>
-
+      {console.log(akashData)}
       <span>Access computing with the best providers</span>
       <div className="deploy-options">
         <DeployOption
