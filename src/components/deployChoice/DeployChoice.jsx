@@ -98,7 +98,7 @@ const DeployChoice = () => {
   return (
     <div className="deploy-choice">
       <h1>Deploy on the cloud of your choice</h1>
-      {console.log(akashData)}
+
       <span>Access computing with the best providers</span>
       <div className="deploy-options">
         <DeployOption
@@ -108,13 +108,13 @@ const DeployChoice = () => {
           data={fluxData}
           nodes={fluxNodes}
         />
-        {/* <DeployOption2
+        <DeployOption2
           image="/akashLanding.svg" // Replace with actual image path
           title="Akash Network"
           text="Explore the power of Akash Network for your decentralized cloud needs. Akash offers a robust and flexible solution for all your hosting requirements, ensuring reliability and ease of use."
           data={akashData}
           nodes={akashData.totalNodes} // Assuming activeLeaseCount represents the number of active nodes
-        /> */}
+        />
       </div>
       <button className="button-landing-4">DEPLOY NOW</button>
     </div>
