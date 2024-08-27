@@ -25,7 +25,7 @@ const Footer2 = () => {
           </a>
 
           <a href="https://x.com/OnGridRun">
-            <img className="icon-redes2" src={"/xLogo.svg"} />
+            <img className="icon-redes2" src={"/twitter.png"} />
           </a>
         </div>
       </section>
