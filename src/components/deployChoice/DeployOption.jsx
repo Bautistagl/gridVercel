@@ -20,7 +20,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
                   start={0}
                   end={Math.floor(nodes.totalNodes)}
                   duration={2.5}
-                  style={{ fontSize: "26px" }}
+                  style={{ fontSize: "20px" }}
                 />
               </p>
             </div>
@@ -29,7 +29,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
               <h4>Total RAM</h4>
               <p className="countup-large">
                 <CountUp
-                  style={{ fontSize: "26px" }}
+                  style={{ fontSize: "20px" }}
                   start={0}
                   end={Math.floor(data.totalRam)}
                   duration={2.5}
@@ -44,7 +44,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
             <h4>Total CPU</h4>
             <p className="countup-large">
               <CountUp
-                style={{ fontSize: "26px" }}
+                style={{ fontSize: "20px" }}
                 start={0}
                 end={Math.floor(data.totalStorage)}
                 duration={2.5}
@@ -56,7 +56,7 @@ const DeployOption = ({ image, title, text, className, data, nodes }) => {
             <h4>Total SSD</h4>
             <p className="countup-large">
               <CountUp
-                style={{ fontSize: "26px" }}
+                style={{ fontSize: "20px" }}
                 start={0}
                 end={Math.floor(data.totalSsd)}
                 duration={2.5}
