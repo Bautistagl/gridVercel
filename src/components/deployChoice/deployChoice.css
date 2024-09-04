@@ -213,5 +213,8 @@
     flex-direction: column;
     margin-bottom: 50px;
   }
+  .scroll2-in-left, .scroll2-in-right{
+    transform: none;
+  }
   
 }
