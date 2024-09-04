@@ -73,3 +73,17 @@
   }
  
 }
+@media only screen and (max-width: 650px) {
+  .graphs-landing h1, .graphs-landing h2{
+    font-size: 1.2rem;
+    width: 100%;
+  }
+  .graphs-landing {
+    width: 90%;
+    margin-bottom: 50px;
+  }
+  .graphs-landing span{
+    width: 100%;
+    font-size: 0.8rem;
+  }
+}

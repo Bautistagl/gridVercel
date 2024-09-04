@@ -262,6 +262,15 @@ a {
     justify-content: center;
     align-items: center;
   }
+  .container-footer2{
+    width: 90%;
+  }
+  .container-footer2 h2{
+    font-size: 1.5rem;
+  }
+  .container-footer2 img{
+    
+  }
 }
 @media only screen and (max-width: 400px) {
   .columnas {

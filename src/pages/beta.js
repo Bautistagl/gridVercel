@@ -23,8 +23,8 @@ export default function Beta() {
       />
       <BestFeaturesBeta />
       <DeployChoiceBeta />
-      {/* <InfoLanding />
-      <Footer2 /> */}
+      <InfoLanding />
+      <Footer2 />
     </div>
   );
 }

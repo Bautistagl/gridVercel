@@ -47,13 +47,13 @@ const InfoLanding = () => {
           <h2>Anything that runs on the cloud can be run on Grid</h2>
         </div>
       </div>
-      <div className="logos-landing">
+      {/* <div className="logos-landing">
         <Image alt="" src="/pythonLogo.png" height={70} width={170} />
         <Image alt="" src="/javascriptLogo.png" height={70} width={80} />
         <Image alt="" src="/mysqlLogo.png" height={70} width={150} />
         <Image alt="" src="/dockerLogo.png" height={70} width={180} />
         <Image alt="" src="/rustLogo.png" height={70} width={160} />
-      </div>
+      </div> */}
     </div>
   );
 };
