@@ -90,7 +90,7 @@ const DeployChoiceBeta = () => {
         <DeployOption
           image="/fluxLanding.svg"
           title="The largest decentralized computing network"
-          text="Discover the freedom of managing a cloud without the need of expertise or DevOps. Even if you're unfamiliar with new decentralized technologies, we make hosting stress-free and accessible for everyone, offering a straightforward and dependable experience in the realm of decentralization."
+          text="Connected Worldwide, Across All Continents, Flux is the largest decentralized network in the world, offering a secure, scalable, and cost-effective cloud for building decentralized applications."
           data={fluxData}
           nodes={fluxNodes}
         />

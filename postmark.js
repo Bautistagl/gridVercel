@@ -1,6 +1,6 @@
-import postmark from ('postmark')
+import * as postmark from "postmark";
 
-const serverToken = process.env.NEXT_PUBLIC_POSTMARK_SERVER_TOKEN;
+const serverToken = "dfef03b8-c50c-437d-b67b-d9bbbd397eac";
 const client = new postmark.ServerClient(serverToken);
 
-export{client}
+export { client };

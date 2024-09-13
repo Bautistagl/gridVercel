@@ -12,9 +12,20 @@ const Banner2 = ({ title, subtitle, subtitle2 }) => {
   };
 
   // Maneja el clic en el botón
-  const handleButtonClick = () => {
-    if (email.trim() !== "") {
-      setIsConfirmed(true); // Cambia el estado a confirmado si el input no está vacío
+  const handleButtonClick = async () => {
+    // if (email.trim() !== "") {
+    //   setIsConfirmed(true); // Cambia el estado a confirmado si el input no está vacío
+    // }
+    try {
+      await fetch("/api/email-send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+    } catch (e) {
+      console.error(e);
     }
   };
 
