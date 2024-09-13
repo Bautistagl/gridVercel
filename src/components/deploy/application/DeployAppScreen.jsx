@@ -61,13 +61,52 @@ const DeployAppScreen = () => {
     setIsDeploying(true);
     setDeploymentMessage(""); // Vaciar el mensaje para mostrar el Spinner
     // Simula un despliegue real
-    setTimeout(() => {
+   
+    try {
+      const deploymentConfig = {
+        name: componentData.serviceName,
+        description: "anotherDescription",
+        owner: process.env.owner,
+        compose: [
+          {
+            name: componentData.serviceName,
+            description: "GridTestNamev0001",
+            repotag: "gridcloud/hello-app:2.0",
+            ports: [36522],
+            domains: [""],
+            environmentParameters: [],
+            commands: [],
+            containerPorts: [8080],
+            containerData: "/data",
+            cpu: parseFloat(componentData.cpu), // Asegúrate de convertir a número
+            ram: parseInt(componentData.ram), // Convertir a número entero
+            hdd: parseInt(componentData.hdd),
+            tiered: false,
+            secrets: "",
+            repoauth: "",
+          },
+        ],
+      };
+      const response = await fetch("/api/deploy-app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deploymentConfig),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setDeploymentMessage(
+        `Despliegue exitoso. ID de transacción: ${data.transactionId}, ID de aplicación: ${data.appId}`
+      );
+    } catch (error) {
+      console.error("Error durante el despliegue:", error);
+      setDeploymentMessage("Error en el despliegue: " + error.message);
+    } finally {
       setIsDeploying(false);
-      setDeploymentMessage("Deploy Successful"); // Cambiar el texto del botón
-      setTimeout(() => {
-        router.push("/profile/project/activity"); // Redirigir a la página deseada
-      }, 1000); // Esperar 1 segundo antes de redirigir
-    }, 3000); // Esperar 3 segundos para simular el despliegue
+    }
   };
   return (
     <div className={`dashboard-container ${darkMode ? "dark" : "light"}`}>
@@ -148,49 +187,3 @@ export default DeployAppScreen;
 
 
 
-
-   // try {
-    //   const deploymentConfig = {
-    //     name: componentData.serviceName,
-    //     description: "anotherDescription",
-    //     owner: "1Bhz9MLptAH8mLFoVcQ9qUxE3jhDi8hq5a",
-    //     compose: [
-    //       {
-    //         name: componentData.serviceName,
-    //         description: "GridTestNamev0001",
-    //         repotag: "gridcloud/hello-app:2.0",
-    //         ports: [36522],
-    //         domains: [""],
-    //         environmentParameters: [],
-    //         commands: [],
-    //         containerPorts: [8080],
-    //         containerData: "/data",
-    //         cpu: parseFloat(componentData.cpu), // Asegúrate de convertir a número
-    //         ram: parseInt(componentData.ram), // Convertir a número entero
-    //         hdd: parseInt(componentData.hdd),
-    //         tiered: false,
-    //         secrets: "",
-    //         repoauth: "",
-    //       },
-    //     ],
-    //   };
-    //   const response = await fetch("/api/deploy-app", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(deploymentConfig),
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    //   }
-    //   const data = await response.json();
-    //   setDeploymentMessage(
-    //     `Despliegue exitoso. ID de transacción: ${data.transactionId}, ID de aplicación: ${data.appId}`
-    //   );
-    // } catch (error) {
-    //   console.error("Error durante el despliegue:", error);
-    //   setDeploymentMessage("Error en el despliegue: " + error.message);
-    // } finally {
-    //   setIsDeploying(false);
-    // }
