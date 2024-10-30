@@ -2,17 +2,15 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import dynamic from 'next/dynamic';
-import Segundo from '@/components/index/Segundo';
-import ContactForm from '@/components/index/ContactForm';
-import Footer from '@/components/index/Footer';
-import Banner from '@/components/landing-AsicHosting/Banner';
-import { useInView } from 'react-intersection-observer';
-import React, {  useRef} from 'react';
-import BestFeatures from '@/components/BestFeatures/BestFeatures';
-import DeployChoice from '@/components/deployChoice/DeployChoice';
-import GraphsLanding from '@/components/Graphs/GraphsLanding';
-import InfoLanding from '@/components/Graphs/InfoLanding';
-import CardPricing from '@/components/pricing/CardPrincing';
+import ContactForm from "@/components/index/ContactForm";
+import Footer from "@/components/index/Footer";
+import Banner from "@/components/landing-AsicHosting/Banner";
+import { useInView } from "react-intersection-observer";
+import React, { useRef } from "react";
+import BestFeatures from "@/components/BestFeatures/BestFeatures";
+import DeployChoice from "@/components/deployChoice/DeployChoice";
+import InfoLanding from "@/components/Graphs/InfoLanding";
+
 
 
 const DynamicNavbar = dynamic(() => import('../components/index/Navbar'), {
@@ -55,14 +53,14 @@ export default function Home() {
         <Banner
           title="Just focus on building."
           subtitle="Grid simplifies the deployment of your applications to a decentralized cloud, allowing you to get started with just a few clicks."
-          subtitle2="Build, conect, deploy."
+          subtitle2="Build, connect, deploy."
         />
         <BestFeatures />
         <DeployChoice />
-        <Segundo />
+        {/* <Segundo /> */}
 
         <InfoLanding />
-        <ContactForm1 ref={contactFormRef} />
+        {/* <ContactForm1 ref={contactFormRef} /> */}
         <Footer scrollToContactForm={scrollToContactForm} />
       </div>
     </>

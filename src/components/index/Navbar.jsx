@@ -38,7 +38,7 @@ function Navbar({ scrollToContactForm }) {
           <Link href="/">
             <img className="navbar-logo" src="/logoLanding.svg" />
           </Link>
-          <div onClick={() => toggleMenu()} className="hamburguer-navbar">
+          {/* <div onClick={() => toggleMenu()} className="hamburguer-navbar">
             {" "}
             {menu === false ? (
               <img className="hamburger-logo" src={"/menu.png"} />
@@ -82,7 +82,7 @@ function Navbar({ scrollToContactForm }) {
               {" "}
               CONTACT{" "}
             </div>
-          </div>
+          </div> */}
           <div className="login-register">
             <Link href="/login">
               <button className="boton-landing1">DEPLOY NOW</button>

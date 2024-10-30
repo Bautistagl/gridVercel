@@ -49,6 +49,22 @@
   width: 120px;
   margin-left: 30px;
 }
+.logo-link{
+  display: flex;
+  align-items: center;
+  width: 180px;
+  margin-left: auto;
+  justify-content: flex-end;
+  margin-right: -5vw;
+  margin-bottom: 15vh;
+  margin-top: 20px;
+}
+.logo-link2{
+  display: flex;
+  align-items: center;
+
+}
+
 .navbar-logo2 {
   display: flex;
   align-items: center;
@@ -501,9 +517,9 @@ button:active {
   }
 }
 @media only screen and (max-width: 1300px) {
-  .boton-landing1 {
+  /* .boton-landing1 {
     margin-left: 60%;
-  }
+  } */
   .boton-landing {
     margin-left: 60%;
   }

@@ -42,7 +42,7 @@ const IntegrationScreen = () => {
     <div className={`dashboard-container ${darkMode ? "dark" : "light"}`}>
       <div className="dashboard-header">
         <h2>Integrations</h2>
-        <ThemeToggle />
+
         <div
           className={`notification-icon ${darkMode ? "dark" : "light"}`}
           onClick={toggleNotifications}
@@ -60,12 +60,6 @@ const IntegrationScreen = () => {
           state="Connect"
           title="Docker"
           image="/docker4.png"
-        />
-        <IntegrationBox
-          mode={darkMode}
-          state="Connect"
-          title="Slack"
-          image="/slackButton.png"
         />
         <IntegrationBox
           mode={darkMode}

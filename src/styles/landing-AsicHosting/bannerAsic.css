@@ -7,19 +7,18 @@
   z-index: 10;
   margin-left: 10%;
 }
-.textosBanner2 {
-  justify-content: center;
-  align-content: center;
-  text-align: start;
-  margin-top: 250px;
-  width: 50%;
-  z-index: 10;
-  margin-left: 6%;
-}
+
 .banner-container {
   display: flex;
   position: relative;
   width: 100%;
+  overflow: hidden;
+}
+.banner-container2 {
+  display: flex;
+  position: relative;
+  width: 100vw !important;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -50,11 +49,12 @@
 }
 .subtituloBanner2 {
   display: flex;
-
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
   width: 100%;
+  margin-top: 15px;
   color: white;
-  justify-content: center;
+ 
   margin-bottom: 50px;
 }
 .subtituloBanner4 {
@@ -65,16 +65,7 @@
   color: white;
   justify-content: center;
 }
-.subtituloBanner3 {
-  display: flex;
 
-  font-size: 20px;
-  width: 50%;
-  margin: 20px auto;
-  color: rgba(255, 255, 255, 0.657);
-
-  text-align: center;
-}
 .tituloBanner {
   font-size: 3rem;
   width: 100%;
@@ -381,66 +372,355 @@
   width: 100%;
   height: 100%;
 }
+.triangleL img {
+  width: 100%;
+  height: 100%;
+}
 
-@media only screen and (max-width: 650px) {
-  .ilustracion-bannerGrande {
-    display: none;
+@keyframes float270 {
+  0% {
+    transform: rotate(270deg) translateY(0); 
   }
-  .banner-container {
-    width: 100%;
+  50% {
+    transform: rotate(270deg) translateY(-10px); 
+  }
+  100% {
+    transform: rotate(270deg) translateY(0);
+  }
+}
+@keyframes float90 {
+  0% {
+    transform: rotate(90deg) translateY(0); 
+  }
+  50% {
+    transform: rotate(90deg) translateY(-10px); 
+  }
+  100% {
+    transform: rotate(90deg) translateY(0);
+  }
+}
+@keyframes float180 {
+  0% {
+    transform: rotate(180deg) translateY(0); 
+  }
+  50% {
+    transform: rotate(180deg) translateY(-10px); 
+  }
+  100% {
+    transform: rotate(180deg) translateY(0);
+  }
+}
+
+.triangleL {
+  position: absolute;
+  
+}
+
+.triangle1L {
+  top: 55%;
+  right: 86%;
+  width: 320px; 
+  height: auto;
+  z-index: 10;
+  animation: float270 5s ease-in-out infinite;
+}
+
+.triangle2L {
+  top: 55%;
+  right: 78%;
+  width: 300px; 
+  height: auto;
+  animation: float90 5s ease-in-out infinite;
+}
+
+.triangle3L {
+  top: 10%;
+  right: 92%;
+  width: 300px; 
+  height: auto;
+  animation: float270 5s ease-in-out infinite;
+}
+
+.triangle4L {
+  top: 25%;
+  right: 90%;
+  width: 250px; 
+  height: auto;
+  animation: float270 5s ease-in-out infinite;
+}
+
+.triangle5L {
+  top: 40%;
+  right: 79%;
+  width: 130px; 
+  height: auto;
+  z-index: 10;
+  animation: float90 5s ease-in-out infinite;
+}
+
+.triangle6L {
+  top: 45%;
+  right: 71%;
+  width: 150px; 
+  height: auto;
+  animation: float90 5s ease-in-out infinite;
+}
+
+.triangle7L {
+  top: 5%;
+  right: 70%;
+  width: 340px; 
+  height: auto;
+  animation: float90 5s ease-in-out infinite;
+  
+}
+
+.triangle8L {
+  top: 11%;
+  right: 62%;
+  width: 220px; 
+  height: auto;
+  animation: float270 5s ease-in-out infinite;
+}
+.triangle9L {
+  top: 75%;
+  right: 57%;
+  width: 600px; 
+  height: auto;
+  z-index: 0;
+  animation: float270 5s ease-in-out infinite;
+}
+.triangle10L {
+  top: 40%;
+  right: 60%;
+  width: 200px; 
+  height: auto;
+  z-index: 10;
+  animation: float180 5s ease-in-out infinite;
+}
+
+.new-login{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-left: auto;
+  margin-right: 10%;
+  width: 35vw;
+  margin-top: 0px;
+}
+.inputs-login{
+  display: flex;
+  flex-direction: column;
+}
+.inputs-login input{
+  margin: 10px;
+  height: 15px;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 7px;
+}
+.inputs-login input::placeholder{
+  color: rgba(255, 255, 255, 0.637);
+}
+.new-login button{
+  border-radius: 25px;
+  background-color: #00b174;
+  width: 45%;
+  font-weight: 700;
+  margin: 10px auto;
+}
+.new-login p{
+  color: white;
+  margin: 10px auto;
+  font-size: 0.9rem;
+}
+.new-login strong{
+  color:#00b174 ;
+  cursor: pointer;
+}
+.new-login h2{
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.new-login span{
+  color: white;
+  text-align: center;
+  margin: 20px auto;
+  margin-bottom: 50px;
+}
+.botonera-login{
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+.google-signIn{
+  background-color: white !important;
+  color: black;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  margin: 5px 5px !important ;
+  
+}
+.google-signIn img{
+  justify-content: center;
+  margin: 0px 10px ;
+}
+.forgot-pass{
+  display: flex;
+  margin-left: auto;
+  margin-right: 18px !important;
+  color: #00b174 !important;
+  font-size: 0.9rem;
+  margin-top: 0px !important;
+  cursor: pointer;
+}
+.forgot-pass:hover{
+  color: #22ca8f !important;
+}
+
+.remember-info{
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.remember-info span{
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .new-login{
+    width: 45vw;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .button-landing-4 {
+ 
+
+    width: 68%;
+    height: 40px;
+    font-size: 0.9rem;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 10px 1px white;
+  }
+  .subtituloBanner2 {
+  font-size: 0.9rem;
+  }
+  .button-landing-1 {
+    background-color: #36b079;
+    border-radius: 50px;
+    width: 68%;
+    height: 40px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
+  .button-landing-2 {
+    background-color: transparent;
+    border-radius: 50px;
+    width: 68%;
+    height: 40px;
+    font-size: 0.9rem;
+    margin-left: 0px;
+  }
+  .container-botones {
+   flex-direction: column;
   }
   .textosBanner {
-    margin-top: 100px;
-    margin-bottom: -100px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 160px;
   }
-  .tituloBanner {
-    font-size: 1.8rem;
-    font-weight: 100;
-  }
+ 
   .banner-container {
-    display: flex;
-    height: 100%;
-  }
-  .subtituloBanner {
-    display: flex;
-    justify-content: center;
-    margin: 0 !important;
-    font-size: 1rem;
-  }
- .triangle5, .triangle4,  .triangle6, .triangle7, .triangle3, .triangle8,.triangle2{
-    display: none;
-  }
-  .textosBanner2 {
-   width: 100%;
-   margin-top: 100px;
-  }
-  .container-botones2{
-    margin-top: 10px;
-  }
-  .button-landing-5{
-    width: 100%;
-  }
-  .navbar-logo2{
-    margin-top: 80px;
-  }
+      width: 100%;
+      display: flex;
+      height: 100%;
+    }
+
+     .tituloBanner {
+      font-size: 1.8rem;
+      font-weight: 100;
+    }
+    .subtituloBanner {
+      display: flex;
+      justify-content: center;
+      margin: 0 !important;
+      font-size: 1rem;
+    }
+    .container-botones2{
+      margin-top: 10px;
+    }
+    .button-landing-5{
+      width: 100%;
+    }
+    .triangle3 {
+      display: none;
+    }
+    .triangle4, .triangle4L {
+      display: none;
+    }
+    .triangle5, .triangle5L {
+      display: none;
+    }
+    .triangle6 {
+      display: none;
+    }
+    .triangle7 {
+      display: none;
+    }
+    .triangle2, .triangle2L {
+      display: none;
+    }
+    .triangle8 {
+      display: none;
+    }
+    .triangle1L, .triangle7L{
+      display: none;
+    }
+    .triangle6L{
+      top: 16%;
+      right: 65%;
+    }
+    .new-login{
+     width: 75vw;
+     z-index: 9999;
+    }
+    .new-login h2{
+      margin-top: -20px;
+      font-size: 2.2rem;
+    }
+    .botonera-login{
+      flex-direction: column;
+    }
+    .google-signIn{
+      width: 80% !important;
+      margin: 10px auto !important;
+    }
 }
 
 @media only screen and (max-width: 1500px) {
   .subtituloBanner{
-    font-size: 1rem;
-    width: 90%;
+    font-size: 0.9rem;
+    width: 100%;
     
   }
   .subtituloBanner5{
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .button-landing-5{
-    font-size: 0.9rem;
-    
-  }
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .button-landing-5{
+      font-size: 0.9rem;
+      
+    }
 }
 
 

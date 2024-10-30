@@ -1,12 +1,14 @@
-import SidebarMobile from "@/components/SidebarMobile";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/ThemeContext";
 
 const SideNavbar = ({ abierto, setAbierto }) => {
   const [menu, setMenu] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const { darkMode, toggleDarkMode } = useTheme();
   const router = useRouter();
 
   const currentPath = router.pathname;
@@ -15,6 +17,17 @@ const SideNavbar = ({ abierto, setAbierto }) => {
   };
 
   const isActive = (path) => (currentPath === path ? "active" : "");
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+
+      router.push("/login");
+    } catch (error) {
+      console.error("Error during logout:", error);
+
+      router.push("/login");
+    }
+  };
 
   return (
     <>
@@ -39,11 +52,13 @@ const SideNavbar = ({ abierto, setAbierto }) => {
             </div>
           </div>
 
-          <li onClick={toggleLinks} className="sideNavbar-li deploy-item">
-            <span>Deploy</span>
-            <span className="deploy-plus">+</span>
-          </li>
-          {showLinks && (
+          <Link href="/profile/deployApp">
+            <li onClick={toggleLinks} className="sideNavbar-li deploy-item">
+              <span>Deploy</span>
+              <span className="deploy-plus">+</span>
+            </li>
+          </Link>
+          {/* {showLinks && (
             <div className="dropdown3">
               <ul>
                 <Link href="/profile/deployApp">
@@ -54,40 +69,59 @@ const SideNavbar = ({ abierto, setAbierto }) => {
                 </Link>
               </ul>
             </div>
-          )}
+          )} */}
 
-          <Link href="/profile">
+          {/* <Link href="/profile">
             <li className={`sideNavbar-li ${isActive("/profile")}`}>
-              Dashboard
+              Applications
             </li>
-          </Link>
-          <Link href="/profile/applications">
+          </Link> */}
+          {/* <Link href="/profile/applications">
             <li
               className={`sideNavbar-li ${isActive("/profile/applications")}`}
             >
               Applications
             </li>
-          </Link>
+          </Link> */}
 
           <Link href="/profile/sharedAccount">
             <li
-              className={`sideNavbar-li ${isActive("/profile/sharedAccount")}`}
+              className={`sideNavbar-li ${
+                darkMode ? "dark" : "light"
+              } ${isActive("/profile/sharedAccount")}`}
             >
               Settings
             </li>
           </Link>
           <Link href="/profile/integration">
-            <li className={`sideNavbar-li ${isActive("/profile/integration")}`}>
+            <li
+              className={`sideNavbar-li ${
+                darkMode ? "dark" : "light"
+              } ${isActive("/profile/integration")}`}
+            >
               Integrations
             </li>
           </Link>
+          <Link href="/profile/billing">
+            <li
+              className={`sideNavbar-li ${
+                darkMode ? "dark" : "light"
+              } ${isActive("/profile/billing")}`}
+            >
+              Billing
+            </li>
+          </Link>
           <Link href="/profile/gridOps">
-            <li className={`sideNavbar-li ${isActive("/profile/gridOps")}`}>
+            <li
+              className={`sideNavbar-li ${
+                darkMode ? "dark" : "light"
+              } ${isActive("/profile/gridOps")}`}
+            >
               GridOps
             </li>
           </Link>
           <Link href={"/"}>
-            <span className="logout-sidebar">
+            <span onClick={handleLogout} className="logout-sidebar">
               Log Out
               <Image
                 className="button-logout"
@@ -99,6 +133,7 @@ const SideNavbar = ({ abierto, setAbierto }) => {
             </span>
           </Link>
 
+          <ThemeToggle />
           <div className="footer-sidebar">
             <div className="contact-links">
               <div className="social-icons">
@@ -151,23 +186,7 @@ const SideNavbar = ({ abierto, setAbierto }) => {
             {/* <span onClick={() => setAbierto(!abierto)}>Contact Support</span> */}
           </div>
         </ul>
-        <img alt="" src="/gridCloud2.svg" className="sidebar-grid" />
-
-        {menu === false ? (
-          <img
-            onClick={() => setMenu(true)}
-            className="sidebar-menu-mobile"
-            src={"/menu.png"}
-          />
-        ) : (
-          <img
-            onClick={() => setMenu(false)}
-            className="sidebar-menu-mobile"
-            src={"/menuCerrado.png"}
-          />
-        )}
       </nav>
-      {menu ? <SidebarMobile /> : ""}
     </>
   );
 };
