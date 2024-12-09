@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-
+import SharedBox from "./SharedBox";
 import Image from "next/image";
-
+import SharedPopUp from "./SharedPopUp";
 import { useTheme } from "@/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import Notis from "@/components/applications2/Notis";
-import SharedBox from "./SharedBox";
-import SharedPopUp from "./SharedPopUp";
 
 const SharedInfo = () => {
   const [selected, setSelected] = useState(1);

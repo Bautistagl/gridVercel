@@ -13,16 +13,16 @@
     pointer-events: none; /* Desactiva cualquier interacción */
     opacity: 0.5;
   }
-  .deployment-config h2{
+  .deployment-config h2, .add-buildpack h2{
     font-size: 0.9rem;
   }
   
-  .deployment-config p{
+  .deployment-config p, .add-buildpack p{
     font-size: 0.8rem;
     color: grey;
     margin: 0px;
   }
-  .deployment-config h3{
+  .deployment-config h3, .add-buildpack h3{
     font-size: 0.8rem;
     color: rgb(0, 0, 0);
     margin: 0px;
@@ -127,6 +127,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     margin: 3px;
+  
   }
   .slider-group input{
     width: 70%;
@@ -159,14 +160,15 @@
     color: white;
   }
   .sliders-akash{
-    width: 50%;
+    width: 48%;
+    padding: 10px 20px;
   }
   .sliders-flux{
     width: 100%;
   }
   .sections-akash{
-    width: 50%;
-   
+    width: 48%;
+    padding: 10px 20px;
   }
 
   .section2 {
@@ -329,4 +331,17 @@
     margin-left: auto;
     display: flex;
     margin-bottom: 10px;
+  }
+  .loading-container{
+    display: flex;
+    z-index: 9999;
+    background-color: #00b174;
+    padding: 5px;
+    border-radius: 15px;
+    width: auto;
+  }
+  .loading-container p{
+    display: flex;
+    color: white;
+    
   }

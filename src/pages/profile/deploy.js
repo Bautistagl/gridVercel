@@ -1,4 +1,5 @@
 import DeployScreen from "@/components/deploy/database/DeployScreen";
+import useAuthCheck from "@/useRefresh";
 import dynamic from "next/dynamic";
 
 import React, { useState } from "react";
@@ -9,12 +10,13 @@ const DynamicNavbar = dynamic(() => import("../../commons/SideNavbar"), {
 export async function getServerSideProps() {
   return {
     redirect: {
-      destination: "/", // Puedes redirigir a una página de "Próximamente" o similar
+      destination: "/",
       permanent: false,
     },
   };
 }
 export default function Deploy() {
+  useAuthCheck();
   const [visible, setVisible] = useState(true);
   const toggleSideBar = () => {
     return setVisible(!visible);

@@ -11,28 +11,32 @@ import AppsFilter from "./AppsFilter";
 
 const AppsTable = () => {
   const { darkMode } = useTheme();
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [showRecents, setShowRecents] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
+  // const [showNotifications, setShowNotifications] = useState(false);
+  // const [showRecents, setShowRecents] = useState(false);
+  // const [showFilters, setShowFilters] = useState(false);
 
-  const toggleNotifications = () => {
-    setShowNotifications(!showNotifications);
-  };
+  // const toggleNotifications = () => {
+  //   setShowNotifications(!showNotifications);
+  // };
 
-  const toggleRecents = () => {
-    setShowRecents(!showRecents);
-  };
+  // const toggleRecents = () => {
+  //   setShowRecents(!showRecents);
+  // };
 
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
+  // const toggleFilters = () => {
+  //   setShowFilters(!showFilters);
+  // };
+
+  // useEffect(()=>{
+
+  // },[])
 
   return (
     <div className={`dashboard-container ${darkMode ? "dark" : "light"}`}>
       <div className="dashboard-header">
         <h2>My applications</h2>
 
-        <div
+        {/* <div  
           className={`notification-icon ${darkMode ? "dark" : "light"}`}
           onClick={toggleNotifications}
         >
@@ -41,18 +45,25 @@ const AppsTable = () => {
             alt="Notifications"
           />
         </div>
-        {showNotifications && <Notis darkMode={darkMode} />}
+        {showNotifications && <Notis darkMode={darkMode} />} */}
       </div>
-      <AppsFilter
+      {/* <AppsFilter
         showFilters={showFilters}
         showRecents={showRecents}
         onClick={toggleRecents}
         onClick2={toggleFilters}
         darkMode={darkMode}
-      />
+      /> */}
       <div className="table-container">
-        <AppsTableHeader />
-        <AppsTableRow type="Web" status="ACTIVE" mode={darkMode} />
+        <div className={`applications-section ${darkMode ? "dark" : "light"}`}>
+          <div className="section-header"></div>
+          <p>It looks like you don&apos;t have any applications running yet</p>
+          <Link href="/profile/deployApp">
+            <button className="section-button">Deploy</button>
+          </Link>
+        </div>
+        {/* <AppsTableHeader />
+        <AppsTableRow type="Web" status="ACTIVE" mode={darkMode} /> */}
       </div>
     </div>
   );
